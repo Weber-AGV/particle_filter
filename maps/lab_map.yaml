@@ -1,0 +1,18 @@
+image: lab_map.pgm # PGM file: white=free, black=occupied, gray=unknown
+
+mode: trinary      # trinary=free/occupied/unknown, 
+                   # scale=probability, raw=direct value
+
+resolution: 0.05   # meters per pixel (5 cm/pixel)
+
+origin: [-3.45, -13.5, 0] # [x, y, yaw] of lower-left pixel 
+                          # in map frame (meters, meters, radians)
+
+negate: 0                 # if 1, reverses color interpretation 
+                          # (dark=free, light=occupied)
+
+occupied_thresh: 0.65     # pixels above this probability are 
+                          # marked occupied (0.0 - 1.0)
+                          
+free_thresh: 0.25         # pixels below this probability are 
+                          # marked free (0.0 - 1.0)

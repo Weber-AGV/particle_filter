@@ -22,8 +22,9 @@
 
 from launch import LaunchDescription
 from launch_ros.actions import Node
-from launch.substitutions import LaunchConfiguration
+from launch.substitutions import LaunchConfiguration, PathJoinSubstitution
 from launch.actions import DeclareLaunchArgument
+from launch_ros.substitutions import FindPackageShare
 from ament_index_python.packages import get_package_share_directory
 import os
 import yaml
@@ -41,7 +42,11 @@ def generate_launch_description():
         'localize_config',
         default_value=localize_config,
         description='Localization configs')
-    ld = LaunchDescription([localize_la])
+    map_name_la = DeclareLaunchArgument(
+        'map_name',
+        default_value=map_name,
+        description='Map name (without extension) in particle_filter/maps/')
+    ld = LaunchDescription([localize_la, map_name_la])
 
     # nodes
     pf_node = Node(
@@ -54,7 +59,9 @@ def generate_launch_description():
         package='nav2_map_server',
         executable='map_server',
         name='map_server',
-        parameters=[{'yaml_filename': os.path.join(get_package_share_directory('particle_filter'), 'maps', map_name + '.yaml')},
+        parameters=[{'yaml_filename': PathJoinSubstitution(
+                         [FindPackageShare('particle_filter'), 'maps',
+                          [LaunchConfiguration('map_name'), '.yaml']])},
                     {'topic': 'map'},
                     {'frame_id': 'map'},
                     {'output': 'screen'},
