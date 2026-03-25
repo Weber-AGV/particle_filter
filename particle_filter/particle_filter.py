@@ -55,7 +55,7 @@ VAR_REPEAT_ANGLES_EVAL_SENSOR_ONE_SHOT = 3
 VAR_RADIAL_CDDT_OPTIMIZATIONS = 4
 
 
-class ParticleFiler(Node):
+class ParticleFilter(Node):
     '''
     This class implements Monte Carlo Localization based on odometry and a laser scanner.
     '''
@@ -707,7 +707,7 @@ class ParticleFiler(Node):
 
 def main(args=None):
     rclpy.init(args=args)
-    pf = ParticleFiler()
+    pf = ParticleFilter()
     rclpy.spin(pf)
 
 if __name__ == '__main__':
@@ -722,5 +722,5 @@ if __name__ == '__main__':
 
 #     # make_flamegraph(r'update')
 
-#     pf = ParticleFiler()
+#     pf = ParticleFilter()
 #     rospy.spin()
