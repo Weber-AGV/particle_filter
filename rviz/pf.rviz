@@ -122,8 +122,31 @@ Visualization Manager:
       Shaft Length: 0.230000004
       Shaft Radius: 0.00999999978
       Shape: Arrow (Flat)
-      Topic: /pf/viz/particles
-      Unreliable: false
+      Topic:
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /pf/viz/particles
+      Value: true
+    - Alpha: 1
+      Axes Length: 0.300000012
+      Axes Radius: 0.00999999978
+      Class: rviz_default_plugins/Pose
+      Color: 0; 255; 0
+      Enabled: true
+      Head Length: 0.100000001
+      Head Radius: 0.0500000007
+      Name: InferredPose
+      Shaft Length: 0.5
+      Shaft Radius: 0.0299999993
+      Shape: Arrow
+      Topic:
+        Depth: 1
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /pf/viz/inferred_pose
       Value: true
     - Alpha: 1
       Autocompute Intensity Bounds: true
